@@ -1,37 +1,11 @@
-import cardvalues as value
-import cardsuit as cs
-import card
 import deck
+import hand
 
-
-# for num1 in range(1, 14):
-#     a = card.Card(num1, cs.CardSuit.SPADES)
-#     cards.append(a)
-#
-#
-# for num1 in range(1, 14):
-#     a = card.Card(num1, cs.CardSuit.CLUBS)
-#     cards.append(a)
-#
-#
-# for num1 in range(1, 14):
-#     a = card.Card(num1, cs.CardSuit.HEARTS)
-#     cards.append(a)
-#
-#
-# for num1 in range(1, 14):
-#     a = card.Card(num1, cs.CardSuit.DIAMONDS)
-#     cards.append(a)
-
-d = deck.Deck(2)
+d = deck.Deck(1)
 cards = d.initializeDeck()
-d.fuckUpTheDeck()
-if d.validateDeck() == True:
-    print("Deck is Validated.")
-else:
-    print("Deck is Invalid")
+d.validateDeck()
+d.shuffleDeck(3)
+h = hand.Hand(cards[0], cards[1])
+h.printHand()
 
-for num in range(0, d.getNumCards()):
-    ps = cards[num]
-    ps.assignPointValue(True)
-    print(str(value.CardValues(ps.value).name) + " of " + str(ps.suit.name) + " with point value of " + str(ps.points))
+

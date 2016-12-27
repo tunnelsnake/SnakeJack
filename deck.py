@@ -34,13 +34,14 @@ class Deck:
 
         return self.deck
 
-    def shuffleDeck(self):    #Uses Fisher-Yates algorithm to shuffle cards
-        i = len(self.deck)
-        while i > 1:
-            j = randrange(0, i)  # 0 <= j <= i
-            self.deck[j], self.deck[i-1] = self.deck[i-1], self.deck[j]
-            i -= 1
-        return
+    def shuffleDeck(self, numshuffles=1): #Uses Fisher-Yates algorithm to shuffle cards
+        for num in range(0, numshuffles):
+            i = len(self.deck)
+            while i > 1:
+                j = randrange(0, i)  # 0 <= j <= i
+                self.deck[j], self.deck[i-1] = self.deck[i-1], self.deck[j]
+                i -= 1
+            return
 
     def getNumDecks(self):
         return self.numdecks
@@ -67,9 +68,12 @@ class Deck:
             if counter == d:
                 pass
             else:
+                print("Deck is Invalidated:")
                 return False
                 break
+        print("Deck is Validated")
         return True
+
     def printDeck(self): #DEBUG function that prints the whole deck
         for num in range(0, self.getNumCards()):
             print(str(value.CardValues(self.deck[num].value).name) + " of " + str(self.deck[num].suit.name) + " with point value of " + str(self.deck[num].points))
