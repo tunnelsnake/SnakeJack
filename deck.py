@@ -36,39 +36,40 @@ class Deck:
     def getCardArray(self):
         return self.deck
 
-    def shuffleDeck(self, numshuffles=1):
+    def shuffleDeck(self, numshuffles=random.randrange(10, 15)):
         for num in range(0, numshuffles):
-            #random.shuffle(self.deck)
+            random.shuffle(self.deck)
             return
 
     def getNumDecks(self):
         return self.numdecks
 
-    def fuckUpTheDeck(self): #creates an unfair deck for debugging purposes
-        self.shuffleDeck()
+    def invalidateDeck(self): #creates an unfair deck for debugging purposes
         self.deck[12] = self.deck[28]
         self.deck[14] = self.deck[38]
 
     def getNumCards(self):
         return self.numdecks * 52
 
-    def validateDeck(self): #checks for duplicate cards and returns true or false. True = deck is good
-        for num in range(0, self.getNumCards()):
+    def validateDeck(self):
+        if self.numdecks * 52 != len(self.deck): #makes sure threre are no extra cards in the array
+            return False
+        for num in range(0, self.getNumCards()): #checks for duplicate cards and returns true or false. True = deck is good
             v = self.deck[num].value
             s = self.deck[num].suit
             d = self.numdecks
-            templist = []
+            list = []
             for num1 in range(0, self.getNumCards()):
                 if self.deck[num1].value == v and self.deck[num1].suit == s:
-                    templist.append(self.deck[num1])
-            counter = len(templist)
+                    list.append(self.deck[num1])
+            counter = len(list)
             if counter == d:
                 pass
             else:
-                print("Deck is Invalidated:")
+                print("Deck is Invalidated.")
                 return False
 
-        print("Deck is Validated")
+        print("Deck is Validated.")
         return True
 
     def printDeck(self): #DEBUG function that prints the whole deck
