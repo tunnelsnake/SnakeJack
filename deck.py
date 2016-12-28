@@ -1,4 +1,4 @@
-from random import randrange
+import random
 import cardsuit as cs
 import cardvalues as value
 import card
@@ -12,9 +12,10 @@ class Deck:
 
     def __init__(self, numdecks=1):
         self.numdecks = numdecks
+        self.initializeDeck()
 
     def initializeDeck(self):
-        for num in range(0, (self.numdecks)):
+        for num in range(0, self.numdecks):
 
             for num1 in range(1, 14):
                 a = card.Card(num1, cs.CardSuit.SPADES)
@@ -32,15 +33,12 @@ class Deck:
                 a = card.Card(num1, cs.CardSuit.DIAMONDS)
                 self.deck.append(a)
 
+    def getCardArray(self):
         return self.deck
 
-    def shuffleDeck(self, numshuffles=1): #Uses Fisher-Yates algorithm to shuffle cards
+    def shuffleDeck(self, numshuffles=1):
         for num in range(0, numshuffles):
-            i = len(self.deck)
-            while i > 1:
-                j = randrange(0, i)  # 0 <= j <= i
-                self.deck[j], self.deck[i-1] = self.deck[i-1], self.deck[j]
-                i -= 1
+            #random.shuffle(self.deck)
             return
 
     def getNumDecks(self):
@@ -58,7 +56,6 @@ class Deck:
         for num in range(0, self.getNumCards()):
             v = self.deck[num].value
             s = self.deck[num].suit
-            p = self.deck[num].points
             d = self.numdecks
             templist = []
             for num1 in range(0, self.getNumCards()):
@@ -70,7 +67,7 @@ class Deck:
             else:
                 print("Deck is Invalidated:")
                 return False
-                break
+
         print("Deck is Validated")
         return True
 

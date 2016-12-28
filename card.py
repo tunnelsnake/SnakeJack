@@ -1,3 +1,6 @@
+import cardsuit as cs
+import cardvalues as values
+
 class Card:
     value = 0
     suit = 0
@@ -36,4 +39,5 @@ class Card:
         if pv == 1 and highace == True:
             self.points = 11
 
-
+    def printAttributes(self):
+        print(values.CardValues(self.value).name + " of " + cs.CardSuit(self.suit).name + " with a point value of " + str(self.points))

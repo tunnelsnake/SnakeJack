@@ -1,11 +1,26 @@
 import deck
 import hand
+import dealer
+import card
 
-d = deck.Deck(1)
-cards = d.initializeDeck()
-d.validateDeck()
-d.shuffleDeck(3)
-h = hand.Hand(cards[0], cards[1])
-h.printHand()
+#TODO:
+#redo fisher-yates shuffle
+#clean up functions
+#work up to hit system
+#systematic play
+#numerical players and order
+#expand deck validation
+
+
+gamedeck = deck.Deck(1)
+gamedeck.shuffleDeck()
+gamedeck.printDeck()
+gamedeck.validateDeck()
+cards = gamedeck.getCardArray()
+cards[51].printAttributes()
+
+
+
+
 
 
