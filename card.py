@@ -23,7 +23,7 @@ class Card:
     def setValue(self, value):
         self.value = value
 
-    def assignPointValue(self, highace=False):
+    def assignPointValue(self, highaceval=True):
         pv = self.value
 
         if pv in range(10, 14): #check to see if the card is a face card or 10
@@ -33,10 +33,10 @@ class Card:
             self.points = pv
 
 
-        if pv == 1 and highace == False:  #protection against misuse of function for assigning 11 to other card values
+        if pv == 1 and highaceval == False:  #protection against misuse of function for assigning 11 to other card values
             self.points = 1
 
-        if pv == 1 and highace == True:
+        if pv == 1 and highaceval == True:
             self.points = 11
 
     def printAttributes(self):

@@ -33,6 +33,22 @@ class Dealer:
     def getHandArray(self):
         return self.hands
 
-    def printPlayerhands(self):
+    def printAllHands(self, showdealerholecard = False):
         for num in range(0, self.numplayers):
             self.hands[num].printHand()
+        self.printDealerHand(showdealerholecard)
+
+    def printDealerHand(self, showholecard = False):
+        print("Dealer Hand With Identifier " + str(self.dealeridentifier))
+        x = self.hands[len(self.hands) - 1]
+        x.card1.printAttributes()
+        if showholecard == False:
+            print("HOLE CARD")
+        else:
+            x.card2.printAttributes()
+        for num in range(0, len(x.hits)):
+            x.hits[num].printAttributes()
+            print("\n")
+
+
+

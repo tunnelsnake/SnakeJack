@@ -4,7 +4,6 @@ import cardvalues as value
 import card
 
 
-
 class Deck:
 
     numdecks = 1
