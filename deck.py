@@ -8,9 +8,10 @@ import card
 class Deck:
 
     numdecks = 1
-    deck = []
+    deck = list
 
     def __init__(self, numdecks=1):
+        self.deck = []
         self.numdecks = numdecks
         self.initializeDeck()
 

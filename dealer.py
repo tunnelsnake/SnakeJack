@@ -2,12 +2,14 @@ import hand
 
 class Dealer:
     numplayers = int
-    hands = []
-    cards = []
+    hands = list
+    cards = list
     cardcounter = 0;
     dealeridentifier = int
 
     def __init__(self, cards, numplayers): #numplayers is not including the dealer
+        self.hands = []
+        self.cards = []
         self.numplayers = numplayers
         self.cards = cards
 
@@ -24,9 +26,13 @@ class Dealer:
         self.hands.append(a)
         self.counter += 2
 
-    def hit(self, playeridentifier): #This function is not the problem, we bypass it completely in player.py using the hand object's addHit method
+    def hit(self, playeridentifier):
         self.hands[playeridentifier].addHit(self.cards[self.counter])
         self.counter += 1
 
     def getHandArray(self):
         return self.hands
+
+    def printPlayerhands(self):
+        for num in range(0, self.numplayers):
+            self.hands[num].printHand()

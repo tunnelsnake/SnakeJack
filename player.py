@@ -1,24 +1,33 @@
 import deck
 import dealer
-import card
+import hand
 
-gamedeck = deck.Deck(1)
-#gamedeck.shuffleDeck() #shuffling is turned of to make it easier to diagnose
-#gamedeck.printDeck()   #enable to print the deck one card at a time
-gamedeck.validateDeck() #makes sure there are no duplicate cards
-cards = gamedeck.getCardArray() #returns the 'deck' of cards for local manipulation
-d = dealer.Dealer(cards, 4) #pass 'deck' and number of players (dealer not included)
-d.deal()
-hands = d.getHandArray() #returns dealt hand objects with unique identifiers
-hands[1].addHit(card.Card(1, 1)) #hits with the ace of spades for easier debug
+class Player:
+
+    wanthit = bool
+    playeridentifier = int
+    hand = object
+
+    def __init__(self, handobj, playeridentifier):
+        self.wanthit = False
+        self.hand = handobj
+        self.playeridentifier = playeridentifier
 
 
-for num in range(0, len(hands)):
-    hands[num].printHand()
-    print("\n")
+    def wantHit(self):
+        print("\n")
+        inp = input("Hit Hand " + str(self.playeridentifier) + "? (Y/N)")
+        if inp.lower() == 'y' or 'n':
+            if inp.lower() == 'n':
+                self.wanthit = False
+                return False
+            elif inp.lower() == 'y':
+                self.wanthit = True
+                return True
+        else:
+            print("Invalid Choice")
+            self.wanthit()
 
-print("Dealer Has Identifier " + str(d.dealeridentifier))
-print(len(hands[2].hits))
 
 
 
