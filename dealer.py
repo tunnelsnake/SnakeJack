@@ -48,7 +48,6 @@ class Dealer:
             x.card2.printAttributes()
         for num in range(0, len(x.hits)):
             x.hits[num].printAttributes()
-            print("\n")
 
 
 

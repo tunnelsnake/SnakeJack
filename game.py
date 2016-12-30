@@ -49,6 +49,7 @@ class Game:
         print("Players and Dealer Done taking hits. Checking Cards.")
         print("\n")
         self.dealer.printAllHands(True)
+        print("Total Value: " + str(self.hands[self.dealer.dealeridentifier].totalPoints()))
 
     def askHit(self, playeridentifier):
         while True:
